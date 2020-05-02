@@ -4,12 +4,12 @@
 const app = require("./app");
 // const { mongoURI } = require("./config/keys");
 
-require("./models/user");
-require("./services/passpost");
+// require("./models/user");
+// require("./services/passpost");
 
 // Routes
-require("./routes/auth-routes")(app);
-require("./routes/billing-routes")(app);
+// require("./routes/auth-routes")(app);
+// require("./routes/billing-routes")(app);
 
 /* -------------------------------------------------------------------------- */
 
