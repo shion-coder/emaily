@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const app = require("./app");
 const { mongoURI } = require("./config/keys");
 
-// require("./models/user");
-// require("./services/passpost");
+require("./models/user");
+require("./services/passpost");
 
 // Routes
 // require("./routes/auth-routes")(app);
