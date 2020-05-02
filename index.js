@@ -22,18 +22,18 @@ const app = require("./app");
 // require("./routes/auth-routes")(app);
 // require("./routes/billing-routes")(app);
 
-app.get("/", (req, res) => {
-  res.send("Heloooo");
-});
+// app.get("/", (req, res) => {
+//   res.send("Heloooo");
+// });
 
-// Serve when production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
+// // Serve when production
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "client/build")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  });
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "client/build", "index.html"));
+//   });
+// }
 
 const PORT = process.env.PORT || 4000;
 
