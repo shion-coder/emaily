@@ -9,6 +9,10 @@ const { cookieKey } = require("./config/keys");
 
 const app = express();
 
+// Routes
+require("./routes/auth-routes")(app);
+require("./routes/billing-routes")(app);
+
 // Midllewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

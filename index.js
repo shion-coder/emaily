@@ -6,10 +6,6 @@ const { mongoURI } = require("./config/keys");
 require("./models/user");
 require("./services/passpost");
 
-// Routes
-require("./routes/auth-routes")(app);
-require("./routes/billing-routes")(app);
-
 /* -------------------------------------------------------------------------- */
 
 // Connect Mongo Database
