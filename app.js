@@ -5,6 +5,9 @@ const cookieSession = require("cookie-session");
 
 const { cookieKey } = require("./config/keys");
 
+require("./models/user");
+require("./services/passpost");
+
 /* -------------------------------------------------------------------------- */
 
 const app = express();
