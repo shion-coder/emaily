@@ -31,7 +31,7 @@ const Stripe = ({ price, handleToken }) => {
 /* -------------------------------------------------------------------------- */
 
 Stripe.propTypes = {
-  price: PropTypes.number,
+  price: PropTypes.string,
   handleToken: PropTypes.func,
 };
 

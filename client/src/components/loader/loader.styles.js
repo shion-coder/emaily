@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import tw from 'tailwind.macro';
 
 /* -------------------------------------------------------------------------- */
 
@@ -30,11 +29,15 @@ const fade = keyframes`
 `;
 
 const color = ({ theme }) => {
-  return theme === 'dark' ? tw`text-light` : tw`text-dark`;
+  return theme === 'dark' ? 'color: #f7f8f9' : 'color:#181818';
 };
 
 export const Container = styled.div`
-  ${tw`w-full flex flex-col justify-center items-center`}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 `;
 
 export const Spinner = styled.div`
@@ -57,10 +60,12 @@ export const Bounce = styled.div`
 `;
 
 export const Text = styled.div`
-  ${tw`mx-auto mt-4 text-sm font-light`}
-
-  ${color}
-
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 300;
   letter-spacing: 0.2rem;
+  color: ${({ theme }) => (theme === 'dark' ? '#f7f8f9' : '#181818')};
   animation: ${fade} 1.25s ease-in-out 0.25s infinite;
 `;

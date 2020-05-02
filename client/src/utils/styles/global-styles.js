@@ -1,4 +1,5 @@
 import { createGlobalStyle, keyframes } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 /* -------------------------------------------------------------------------- */
 
@@ -13,6 +14,8 @@ const fadeIn = keyframes`
 `;
 
 export const GlobalStyles = createGlobalStyle`
+  ${normalize}
+
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;

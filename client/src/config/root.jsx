@@ -12,7 +12,6 @@ import Theme from 'config/theme';
 import App from 'containers/app/app.container';
 
 import { GlobalStyles } from 'utils/styles/global-styles';
-import 'utils/styles/main.css';
 
 /* -------------------------------------------------------------------------- */
 

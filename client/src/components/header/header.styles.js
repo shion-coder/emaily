@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import tw from 'tailwind.macro';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -7,11 +6,18 @@ import Typography from '@material-ui/core/Typography';
 /* -------------------------------------------------------------------------- */
 
 export const HeaderContainer = styled.div`
-  ${tw`flex justify-between items-center px-5 py-5`}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
 `;
 
 export const Image = styled.img`
-  ${tw`h-12 w-12 object-contain object-center cursor-pointer`}
+  height: 3rem;
+  width: 3rem;
+  object-fit: contain;
+  object-position: center;
+  cursor: pointer;
 `;
 
 export const Container = styled.div``;
