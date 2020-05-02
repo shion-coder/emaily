@@ -1,9 +1,9 @@
 // const mongoose = require("mongoose");
-const path = require("path");
-const express = require("express");
-const app = express();
+// const path = require("path");
+// const express = require("express");
+// const app = express();
 
-// const app = require("./app");
+const app = require("./app");
 // const { mongoURI } = require("./config/keys");
 
 // require("./models/user");
