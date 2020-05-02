@@ -1,5 +1,6 @@
 const express = require("express");
 const passpost = require("passport");
+const path = require("path");
 const cookieSession = require("cookie-session");
 
 const { cookieKey } = require("./config/keys");
