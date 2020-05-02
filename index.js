@@ -14,11 +14,11 @@ const { mongoURI } = require("./config/keys");
 /* -------------------------------------------------------------------------- */
 
 // Connect Mongo Database
-// mongoose.connect(mongoURI, {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
 
 // Serve when production
 // if (process.env.NODE_ENV === "production") {
