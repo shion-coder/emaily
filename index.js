@@ -9,23 +9,23 @@ require("./services/passpost");
 
 /* -------------------------------------------------------------------------- */
 
-// Connect Mongo Database
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+// // Connect Mongo Database
+// mongoose.connect(mongoURI, {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true,
+// });
 
-// Routes
-require("./routes/auth-routes")(app);
-require("./routes/billing-routes")(app);
+// // Routes
+// require("./routes/auth-routes")(app);
+// require("./routes/billing-routes")(app);
 
 // Serve when production
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, "client/build")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
 
