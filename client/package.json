@@ -10,6 +10,8 @@
     "axios-retry": "^3.1.8",
     "http-proxy-middleware": "^1.0.3",
     "lodash-es": "^4.17.15",
+    "postcss": "^7.0.28",
+    "postcss-cli": "^7.1.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
@@ -39,8 +41,6 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
-    "postcss": "^7.0.28",
-    "postcss-cli": "^7.1.0",
     "prettier": "^1.19.1",
     "redux-devtools-extension": "^2.13.8",
     "tailwind.macro": "^1.0.0-alpha.10"
