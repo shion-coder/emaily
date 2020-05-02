@@ -15,12 +15,10 @@ const sagaMiddleware = createSagaMiddleware();
 const middlewares = [sagaMiddleware];
 
 // Setup Redux DevTools only in development mode
-// const enhancer =
-//   process.env.NODE_ENV === 'development'
-//     ? composeWithDevTools(applyMiddleware(...middlewares))
-//     : compose(applyMiddleware(...middlewares));
-
-const enhancer = composeWithDevTools(applyMiddleware(...middlewares));
+const enhancer =
+  process.env.NODE_ENV === 'development'
+    ? composeWithDevTools(applyMiddleware(...middlewares))
+    : compose(applyMiddleware(...middlewares));
 
 export const store = createStore(rootReducer, enhancer);
 
