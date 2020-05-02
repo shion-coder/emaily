@@ -1,7 +1,9 @@
 // const mongoose = require("mongoose");
 const path = require("path");
+const express = require("express");
+const app = express();
 
-const app = require("./app");
+// const app = require("./app");
 // const { mongoURI } = require("./config/keys");
 
 // require("./models/user");
@@ -19,6 +21,10 @@ const app = require("./app");
 // // Routes
 // require("./routes/auth-routes")(app);
 // require("./routes/billing-routes")(app);
+
+app.get("/", (req, res) => {
+  res.send("Heloooo");
+});
 
 // Serve when production
 if (process.env.NODE_ENV === "production") {
