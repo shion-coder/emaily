@@ -1,11 +1,11 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 // const path = require("path");
 
 const app = require("./app");
 // const { mongoURI } = require("./config/keys");
 
 // require("./models/user");
-require("./services/passpost");
+// require("./services/passpost");
 
 // Routes
 // require("./routes/auth-routes")(app);
@@ -14,11 +14,11 @@ require("./services/passpost");
 /* -------------------------------------------------------------------------- */
 
 // Connect Mongo Database
-// mongoose.connect(mongoURI, {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
 
 // Serve when production
 // if (process.env.NODE_ENV === "production") {
