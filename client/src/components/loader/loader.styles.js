@@ -28,10 +28,6 @@ const fade = keyframes`
   }
 `;
 
-const color = ({ theme }) => {
-  return theme === 'dark' ? 'color: #f7f8f9' : 'color:#181818';
-};
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
