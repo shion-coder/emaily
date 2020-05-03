@@ -4,7 +4,7 @@ const sgMail = require("@sendgrid/mail");
 const requireLogin = require("../middlewares/require-login");
 const requireCredits = require("../middlewares/require-credits");
 
-const { sendGridKey } = require("../config/keys");
+const { sendGridKey, redirectDomain } = require("../config/keys");
 
 /* -------------------------------------------------------------------------- */
 
@@ -13,6 +13,10 @@ sgMail.setApiKey(sendGridKey);
 const Survey = mongoose.model("surveys");
 
 module.exports = (app) => {
+  app.get("/api/surveys/thanks", (req, res) => {
+    res.send("Thanks for voting!");
+  });
+
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
@@ -39,10 +43,10 @@ module.exports = (app) => {
               <p>Please answer the following question:</p>
               <p>${body}</p>
               <div>
-                <a href="http://localhost:3000">Yes</a>
+                <a href="${redirectDomain}/api/surveys/thanks">Yes</a>
               </div>
               <div>
-                <a href="http://localhost:3000">No</a>
+                <a href="${redirectDomain}/api/surveys/thanks">No</a>
               </div>
             </div>
           </body>
