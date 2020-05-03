@@ -8,7 +8,6 @@ const { cookieKey, mongoURI } = require("./config/keys");
 
 require("./models/user");
 require("./models/survey");
-require("./routes/survey-routes");
 require("./services/passpost");
 
 /* -------------------------------------------------------------------------- */
@@ -37,6 +36,7 @@ app.use(passpost.session());
 // Routes
 require("./routes/auth-routes")(app);
 require("./routes/billing-routes")(app);
+require("./routes/survey-routes")(app);
 
 // Production
 if (process.env.NODE_ENV === "production") {
