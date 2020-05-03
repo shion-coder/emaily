@@ -8,7 +8,7 @@ const { cookieKey, mongoURI } = require("./config/keys");
 
 require("./services/passpost");
 require("./models/user");
-require("./models/survey");
+// require("./models/survey");
 require("./routes/survey-routes");
 
 /* -------------------------------------------------------------------------- */
