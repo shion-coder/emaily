@@ -6,8 +6,10 @@ const path = require("path");
 
 const { cookieKey, mongoURI } = require("./config/keys");
 
-require("./models/user");
 require("./services/passpost");
+require("./models/user");
+require("./models/survey");
+require("./routes/survey-routes");
 
 /* -------------------------------------------------------------------------- */
 
