@@ -6,8 +6,10 @@ import Fab from '@material-ui/core/Fab';
 
 export const Container = styled.div`
   position: relative;
+  height: 100%;
   padding-top: 4rem;
   text-align: center;
+  box-sizing: border-box;
 `;
 
 export const StyledFab = styled(Fab)`

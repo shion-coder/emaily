@@ -16,7 +16,7 @@ const Stripe = ({ price, handleToken }) => {
   return (
     <StripeCheckout
       name="Emaily"
-      description="..."
+      description="4242 4242 4242 4242 - 10/20 - 123"
       amount={priceForStripe}
       token={token => handleToken(priceForStripe, token)}
       stripeKey={process.env.REACT_APP_STRIPE_KEY}

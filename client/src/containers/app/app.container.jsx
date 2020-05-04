@@ -5,19 +5,20 @@ import { connect } from 'react-redux';
 import { setDimensions } from 'redux/dimensions/dimensions.actions';
 import { fetchOauth } from 'redux/oauth/oauth.actions';
 
-import { debounce } from 'lodash-es';
 import { Switch, Route } from 'react-router-dom';
+import { debounce } from 'lodash-es';
 
 import Header from 'components/header/header.component';
 import Footer from 'components/footer/footer.component';
 import Loader from 'components/loader/loader.component';
 
-import { Container } from './app.styles';
+import { Container, Body } from './app.styles';
 
 /* -------------------------------------------------------------------------- */
 
 const Landing = lazy(() => import('pages/landing/landing.page'));
 const Dashboard = lazy(() => import('pages/dashboard/dashboard.page'));
+const SurveyNew = () => <p>...</p>;
 
 const App = ({ setDimensions, fetchOauth }) => {
   useEffect(() => {
@@ -43,12 +44,15 @@ const App = ({ setDimensions, fetchOauth }) => {
     <Container>
       <Header />
 
-      <Suspense fallback={<Loader />}>
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/surveys" component={Dashboard} />
-        </Switch>
-      </Suspense>
+      <Body>
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route path="/surveys/new" component={SurveyNew} />
+          </Switch>
+        </Suspense>
+      </Body>
 
       <Footer />
     </Container>
