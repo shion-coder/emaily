@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -9,8 +9,15 @@ import { debounce } from 'lodash-es';
 import { Switch, Route } from 'react-router-dom';
 
 import Header from 'components/header/header.component';
+import Footer from 'components/footer/footer.component';
+import Loader from 'components/loader/loader.component';
+
+import { Container } from './app.styles';
 
 /* -------------------------------------------------------------------------- */
+
+const Landing = lazy(() => import('pages/landing/landing.page'));
+const Dashboard = lazy(() => import('pages/dashboard/dashboard.page'));
 
 const App = ({ setDimensions, fetchOauth }) => {
   useEffect(() => {
@@ -32,16 +39,19 @@ const App = ({ setDimensions, fetchOauth }) => {
     fetchOauth();
   }, [fetchOauth]);
 
-  const Surveys = () => <></>;
-
   return (
-    <>
+    <Container>
       <Header />
 
-      <Switch>
-        <Route exact path="/surveys" component={Surveys} />
-      </Switch>
-    </>
+      <Suspense fallback={<Loader />}>
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/surveys" component={Dashboard} />
+        </Switch>
+      </Suspense>
+
+      <Footer />
+    </Container>
   );
 };
 

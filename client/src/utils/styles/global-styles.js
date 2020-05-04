@@ -31,5 +31,9 @@ export const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
+
+    :visited, :hover, :active {
+      color: inherit;
+    }
   }
 `;
