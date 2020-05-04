@@ -9,6 +9,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios-retry": "^3.1.8",
+    "formik": "^2.1.4",
     "http-proxy-middleware": "^1.0.3",
     "lodash-es": "^4.17.15",
     "react": "^16.13.1",
@@ -25,7 +26,8 @@
     "reselect": "^4.0.0",
     "styled-components": "^5.1.0",
     "styled-normalize": "^8.0.7",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "yup": "^0.28.5"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

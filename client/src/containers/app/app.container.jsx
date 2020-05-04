@@ -18,7 +18,7 @@ import { Container, Body } from './app.styles';
 
 const Landing = lazy(() => import('pages/landing/landing.page'));
 const Dashboard = lazy(() => import('pages/dashboard/dashboard.page'));
-const SurveyNew = () => <p>...</p>;
+const SurveyNew = lazy(() => import('pages/survey-new/survey-new.page'));
 
 const App = ({ setDimensions, fetchOauth }) => {
   useEffect(() => {
