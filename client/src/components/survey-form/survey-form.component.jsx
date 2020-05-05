@@ -44,19 +44,19 @@ const MyTextInput = ({ label, ...props }) => {
 
 const renderFields = () => FIELD.map(field => <MyTextInput key={field.name} {...field} />);
 
-const SurveyForm = ({ onSurveySubmit, form: { title, subject, body, emails }, submitForm }) => (
+const SurveyForm = ({ onSurveySubmit, form: { title, subject, body, recipients }, submitForm }) => (
   <Formik
     initialValues={{
       title: title || '',
       subject: subject || '',
       body: body || '',
-      emails: emails || '',
+      recipients: recipients || '',
     }}
     validationSchema={Yup.object({
       title: Yup.string().required('Required'),
       subject: Yup.string().required('Required'),
       body: Yup.string().required('Required'),
-      emails: Yup.array()
+      recipients: Yup.array()
         .transform(function(value, originalValue) {
           if (this.isType(value) && value !== null) {
             return value;
