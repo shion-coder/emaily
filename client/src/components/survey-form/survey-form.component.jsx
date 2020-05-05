@@ -1,32 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectFormValues } from 'redux/form/form.selectors';
+import { submitForm } from 'redux/form/form.actions';
 
 import { Link } from 'react-router-dom';
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 
+import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import CloseIcon from '@material-ui/icons/Close';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+
+import { FIELD } from 'utils/form/form-field';
 
 import { ButtonContainer, StyledButton } from './survey-form.styles';
 
 /* -------------------------------------------------------------------------- */
 
-const FIELD = [
-  { label: 'Survey Title', name: 'title', type: 'text' },
-  { label: 'Subject Line', name: 'subject', type: 'text' },
-  { label: 'Email Body', name: 'body', type: 'text' },
-  { label: 'Recipient List', name: 'emails', type: 'text' },
-];
+const mapStateToProps = createStructuredSelector({
+  form: selectFormValues,
+});
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
     <TextField
-      {...field}
       id={props.name}
       label={`${label} *`}
+      {...field}
       error={meta.touched && !!meta.error}
-      helperText={meta.error}
+      helperText={meta.touched && !!meta.error && meta.error}
       margin="normal"
       variant="outlined"
       fullWidth
@@ -36,13 +44,13 @@ const MyTextInput = ({ label, ...props }) => {
 
 const renderFields = () => FIELD.map(field => <MyTextInput key={field.name} {...field} />);
 
-const SurveyForm = () => (
+const SurveyForm = ({ onSurveySubmit, form: { title, subject, body, emails }, submitForm }) => (
   <Formik
     initialValues={{
-      title: '',
-      subject: '',
-      body: '',
-      emails: '',
+      title: title || '',
+      subject: subject || '',
+      body: body || '',
+      emails: emails || '',
     }}
     validationSchema={Yup.object({
       title: Yup.string().required('Required'),
@@ -60,24 +68,26 @@ const SurveyForm = () => (
         .required('Required'),
     })}
     onSubmit={(values, { setSubmitting }) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-      }, 400);
+      setSubmitting(false);
+      onSurveySubmit();
+      submitForm(values);
     }}
   >
     <Form>
+      <Typography variant="h4" color="primary" align="center" paragraph>
+        Create Campaign
+      </Typography>
       {renderFields()}
 
       <ButtonContainer>
         <Link to="/surveys">
-          <StyledButton variant="contained" color="secondary" size="large">
+          <StyledButton variant="contained" color="secondary" size="large" endIcon={<CloseIcon />}>
             Cancel
           </StyledButton>
         </Link>
 
-        <StyledButton type="submit" variant="contained" color="primary" size="large">
-          Submit
+        <StyledButton type="submit" variant="contained" color="primary" size="large" endIcon={<NavigateNextIcon />}>
+          Next
         </StyledButton>
       </ButtonContainer>
     </Form>
@@ -86,4 +96,10 @@ const SurveyForm = () => (
 
 /* -------------------------------------------------------------------------- */
 
-export default SurveyForm;
+SurveyForm.propTypes = {
+  onSurveySubmit: PropTypes.func,
+  form: PropTypes.object,
+  submitForm: PropTypes.func,
+};
+
+export default connect(mapStateToProps, { submitForm })(SurveyForm);
