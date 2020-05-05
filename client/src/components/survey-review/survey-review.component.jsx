@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectFormValues } from 'redux/form/form.selectors';
+import { sendSurveyAndUpdateUser } from 'redux/oauth/oauth.actions';
+
+import { useHistory } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -20,7 +23,9 @@ const mapStateToProps = createStructuredSelector({
   form: selectFormValues,
 });
 
-const SurveyReview = ({ onCancel, form }) => {
+const SurveyReview = ({ onCancel, form, sendSurveyAndUpdateUser }) => {
+  const history = useHistory();
+
   const renderFields = () =>
     FIELD.map(({ label, name }) => (
       <Grid key={name}>
@@ -30,6 +35,11 @@ const SurveyReview = ({ onCancel, form }) => {
         </Typography>
       </Grid>
     ));
+
+  const handleSubmit = () => {
+    sendSurveyAndUpdateUser(form);
+    history.push('/surveys');
+  };
 
   return (
     <Container>
@@ -44,7 +54,14 @@ const SurveyReview = ({ onCancel, form }) => {
           Back
         </StyledButton>
 
-        <StyledButton type="submit" variant="contained" color="primary" size="large" endIcon={<MailOutlineIcon />}>
+        <StyledButton
+          type="submit"
+          variant="contained"
+          color="primary"
+          size="large"
+          endIcon={<MailOutlineIcon />}
+          onClick={handleSubmit}
+        >
           Send Survey
         </StyledButton>
       </ButtonContainer>
@@ -59,4 +76,4 @@ SurveyReview.propTypes = {
   form: PropTypes.object,
 };
 
-export default connect(mapStateToProps)(SurveyReview);
+export default connect(mapStateToProps, { sendSurveyAndUpdateUser })(SurveyReview);

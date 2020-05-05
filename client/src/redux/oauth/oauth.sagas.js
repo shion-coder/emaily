@@ -2,7 +2,7 @@ import { takeLatest, all, call, put, cancelled } from 'redux-saga/effects';
 
 import { CancelToken } from 'axios';
 
-import { makeOauthRequest, makeChargeRequest } from 'api/api';
+import { makeOauthRequest, makeChargeRequest, sendSurveyRequest } from 'api/api';
 
 import {
   FETCH_OAUTH_TRIGGER,
@@ -10,19 +10,25 @@ import {
   FETCH_OAUTH_SUCCESS,
   FETCH_OAUTH_FAILURE,
   HANDLE_STRIPE_TOKEN,
+  SEND_SURVEY,
 } from './oauth.types';
 
 /* -------------------------------------------------------------------------- */
 
-const oauthStart = function*({ amount, token }) {
+const oauthStart = function*({ amount, token, values }) {
   const source = CancelToken.source();
 
-  if (!amount && !token) {
+  if (!amount && !token && !values) {
     yield put({ type: FETCH_OAUTH_START });
   }
 
   try {
-    const data = amount && token ? yield call(makeChargeRequest, amount, token) : yield call(makeOauthRequest);
+    const data =
+      amount && token
+        ? yield call(makeChargeRequest, amount, token)
+        : values
+        ? yield call(sendSurveyRequest, values)
+        : yield call(makeOauthRequest);
 
     yield put({ type: FETCH_OAUTH_SUCCESS, payload: data });
   } catch (error) {
@@ -46,7 +52,7 @@ const oauthStart = function*({ amount, token }) {
 };
 
 const getOauthTrigger = function*() {
-  yield takeLatest([FETCH_OAUTH_TRIGGER, HANDLE_STRIPE_TOKEN], oauthStart);
+  yield takeLatest([FETCH_OAUTH_TRIGGER, HANDLE_STRIPE_TOKEN, SEND_SURVEY], oauthStart);
 };
 
 /* -------------------------------------------------------------------------- */

@@ -20,3 +20,9 @@ export const makeChargeRequest = async (amount, token) => {
 
   return data;
 };
+
+export const sendSurveyRequest = async values => {
+  const { data } = await axios.post('/api/surveys', values);
+
+  return data;
+};

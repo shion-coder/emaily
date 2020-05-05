@@ -1,4 +1,4 @@
-import { FETCH_OAUTH_TRIGGER, HANDLE_STRIPE_TOKEN } from './oauth.types';
+import { FETCH_OAUTH_TRIGGER, HANDLE_STRIPE_TOKEN, SEND_SURVEY } from './oauth.types';
 
 /* -------------------------------------------------------------------------- */
 
@@ -10,4 +10,9 @@ export const handleToken = (amount, token) => ({
   type: HANDLE_STRIPE_TOKEN,
   amount,
   token,
+});
+
+export const sendSurveyAndUpdateUser = values => ({
+  type: SEND_SURVEY,
+  values,
 });
