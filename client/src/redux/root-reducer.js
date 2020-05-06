@@ -6,6 +6,7 @@ import { dimensionsReducer } from 'redux/dimensions/dimensions.reducer';
 import { themeReducer } from 'redux/theme/theme.reducer';
 import { oauthReducer } from 'redux/oauth/oauth.reducer';
 import { formReducer } from 'redux/form/form.reducer';
+import { surveysReducer } from 'redux/surveys/surveys.reducer';
 
 /* -------------------------------------------------------------------------- */
 
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   theme: themeReducer,
   oauth: oauthReducer,
   form: formReducer,
+  surveys: surveysReducer,
 });
 
 export const rootReducer = persistReducer(persistConfig, reducer);

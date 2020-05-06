@@ -2,8 +2,9 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
+
+import SurveyList from 'components/survey/survey-list/survey-list.component';
 
 import { Container, StyledFab } from './dashboard.styles';
 
@@ -11,9 +12,7 @@ import { Container, StyledFab } from './dashboard.styles';
 
 const Dashboard = () => (
   <Container>
-    <Typography variant="h2" color="primary">
-      Dashboard
-    </Typography>
+    <SurveyList />
 
     <Link to="/surveys/new">
       <StyledFab size="large" color="primary" aria-label="add">

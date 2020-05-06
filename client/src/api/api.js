@@ -26,3 +26,9 @@ export const sendSurveyRequest = async values => {
 
   return data;
 };
+
+export const getSurveys = async () => {
+  const { data } = await axios.get('/api/surveys');
+
+  return data;
+};

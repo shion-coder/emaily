@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { submitForm } from 'redux/form/form.actions';
 
-import SurveyForm from 'components/survey-form/survey-form.component';
-import SurveyReview from 'components/survey-review/survey-review.component';
+import SurveyForm from 'components/survey/survey-form/survey-form.component';
+import SurveyReview from 'components/survey/survey-review/survey-review.component';
 
 import { Container } from './survey-new.styles';
 
